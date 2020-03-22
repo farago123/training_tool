@@ -23,15 +23,39 @@
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <% end %> 
 
-    <p class="navbar-text float-right">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% end %>
-    </p>
+          
+          <% if user_signed_in? %>
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="/">TrainingTool</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a href="/">All Courses</a></li>
+                  <li><a href="#">My Courses</a></li>
+                  <li><a href="#">Instructing Courses</a></li>
+
+                  <% if current_user.admin? %>
+                     <li><a href="/courses/new">Create a Course</a></li>
+                  <% end %>
+                </ul>
+
+
+
+                <p class="navbar-text" style="float: right;">
+                  Logged in as <strong><%= current_user.email %></strong>.
+                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                </p>
+              </div>
+
+            </nav>
+          <% end %>
+          
+        
+
     <%= yield %>
   </body>
 </html>

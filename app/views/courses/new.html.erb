@@ -1,0 +1,24 @@
+
+<div class="newcourse">
+	<%= form_for @course do |f| %>
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+	  <br><br>
+	  <%= f.label :description %>
+	  <%= f.text_field :description %>
+	  <br><br>
+	  <%= f.label :start_date %>
+	  <%= f.date_select :start_date, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year-2, end_year: Date.today.year + 3}, {required: true} %>
+	  <br><br>
+	  <%= f.label :end_date %>
+	  <%= f.date_select :end_date, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year-2, end_year: Date.today.year + 3}, {required: true} %>
+	  <br><br>
+
+	  <%= f.label :time %>
+	  <%= f.text_field :time %>
+	  <br><br>
+
+
+	  <%= f.submit "Create Course" %>
+	<% end %>
+</div>
