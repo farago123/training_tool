@@ -3,3 +3,8 @@
 <h3 style="margin-left: 20px">Start Date: <%= @course.start_date %></h3><hr> 
 <h3 style="margin-left: 20px">End Date: <%= @course.end_date %></h3><hr>
 <h3 style="margin-left: 20px">Time: <%= @course.time %></h3><hr>
+
+<%= button_to "Back to Courses", root_path, method: :get, class: "btn btn-primary", style: "margin-left: 18px; float:left;" %>
+<% if Date.today < @course.start_date %> 
+	<%= button_to "Sign Up For This Course", {:controller => "courses", :action => "signup", :course_id => @course.id}, method: :post, class: "btn btn-primary", style: "margin-left: 20px; float:left;" %>
+<% end %>

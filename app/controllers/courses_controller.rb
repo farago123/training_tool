@@ -22,6 +22,19 @@ class CoursesController < ApplicationController
   	  @course = Course.find(params[:format])
   end
 
+  def signup
+      @user = User.find(current_user.id)
+      @course = Course.find(params[:course_id])
+      @course.users.push(@user)
+      @user.courses.push(@course)
+
+      if @user.save and @course.save
+        redirect_to courses_url(@course), :flash => { :notice => "You have successfully signed up for this course." }
+      else
+        redirect_to courses_url(@course), :flash => { :alert => "There was an error when trying to signup for this course." }
+      end      
+  end
+
   private
 
 	def course_params
