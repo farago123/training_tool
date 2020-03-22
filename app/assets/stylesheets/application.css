@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ .login {
+ 	background: url("login.jpg") no-repeat center center fixed;;
+ 	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
+
+ .pleaselogin {
+ 	margin-left: 56%;
+ 	margin-top: 1%;
+ }
+
+ .loginform {
+ 	margin-left: 56%;
+ }

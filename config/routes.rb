@@ -1,6 +1,4 @@
-Rails.application.routes.draw do 	
-   
-  get 'welcome/index'
-  root 'welcome#index'
+Rails.application.routes.draw do
+  root 'courses#index'
   devise_for :users
 end
