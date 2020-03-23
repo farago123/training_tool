@@ -18,6 +18,18 @@ class CoursesController < ApplicationController
    
   end
 
+  def destroy
+
+      @course = Course.find(params[:id])
+      
+      if Course.destroy(params[:id])
+        redirect_to root_path, :flash => { :notice => "You have successfully deleted this course." }
+      else
+        redirect_to courses_url(@course), :flash => { :alert => "There was an error when trying to delete course." }
+      end
+
+  end
+
   def show
   	  @course = Course.find(params[:format])
   end
