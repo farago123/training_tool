@@ -7,5 +7,10 @@
 <%= button_to "Back to Courses", root_path, method: :get, class: "btn btn-primary", style: "margin-left: 18px; float:left;" %>
 <% if Date.today < @course.start_date %> 
 	<%= button_to "Sign Up For This Course", {:controller => "courses", :action => "signup", :course_id => @course.id}, method: :post, class: "btn btn-primary", style: "margin-left: 20px; float:left;" %>
+<% else %>
+	<h3 style="margin-left: 400px">Sorry, you cannot sign up for this course anymore. </h3><hr>	
 <% end %>
+
+<% if current_user.admin? %>
 <%= button_to "Delete This Course", courses_path(:id => @course.id), :method => :delete, class: "btn btn-primary", style: "margin-left: 20px; float:left;", data: {confirm: "Are you sure you want to delete this course?"} %>
+<% end %>

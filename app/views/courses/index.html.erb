@@ -1,8 +1,18 @@
 <body>
 
 	<% if @courses.empty? %>
-		<h3 style="margin-left: 18px"> There are 0 courses right now. </h3>
+	    <% if @search == false %>
+			<h3 style="margin-left: 18px"> There are 0 courses right now. </h3>
+		<% else %>
+			<h3 style="margin-left: 18px"> No search results to display. </h3>
+		<% end %>		
 	<% else %>
+
+		<%= form_tag(root_path, {class: 'search',  method: :get}) do %>
+		  <%= text_field_tag :search %>
+		  <%= submit_tag 'Search' %>
+		<% end %>
+
 		<div class="table-responsive">
 		  <table class="table">
 		  	    <h3 style="margin-left: 8px;">All Courses</h3>

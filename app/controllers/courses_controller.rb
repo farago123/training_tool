@@ -1,6 +1,14 @@
 class CoursesController < ApplicationController
+  
   def index
-  	  @courses = Course.all
+    if params[:search]
+      @courses = Course.where('name LIKE ?', "%#{params[:search]}%")
+      @courses |= Course.where('description LIKE ?', "%#{params[:search]}%")
+      @search = true 
+    else
+      @courses = Course.all
+      @search = false
+    end
   end
 
   def new
@@ -52,12 +60,12 @@ class CoursesController < ApplicationController
   end
 
   def mycourses
-      @courses = current_user.courses
+      @courses = current_user.courses.where("end_date > #{Date.today}")
   end
 
   private
 
 	def course_params
-	   params.require(:course).permit(:name, :description, :start_date, :end_date, :time)
+	   params.require(:course).permit(:name, :description, :start_date, :end_date, :time, :search)
 	end
 end
