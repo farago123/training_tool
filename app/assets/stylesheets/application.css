@@ -40,6 +40,14 @@
  	margin-left: 56%;
  }
 
+ .loginform label {
+ 	color: blue;
+ }
+
+  .loginform a {
+ 	color: blue !important;
+ }
+
  .newcourse {
  	margin-left: 15px;
  }
