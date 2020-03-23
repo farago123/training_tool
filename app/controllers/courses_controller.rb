@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
        @course = Course.new(course_params)
 	
 	   if @course.save
-	      redirect_to courses_url(@course)
+	      redirect_to courses_url(@course), :flash => { :notice => "You have successfully created a new course." }
 	   else
 	      render 'new'
 	   end
@@ -25,14 +25,22 @@ class CoursesController < ApplicationController
   def signup
       @user = User.find(current_user.id)
       @course = Course.find(params[:course_id])
-      @course.users.push(@user)
-      @user.courses.push(@course)
 
-      if @user.save and @course.save
-        redirect_to courses_url(@course), :flash => { :notice => "You have successfully signed up for this course." }
+      if(!@course.users.include?(@user))
+        @course.users.push(@user)
+
+        if @course.save
+          redirect_to courses_url(@course), :flash => { :notice => "You have successfully signed up for this course." }
+        else
+          redirect_to courses_url(@course), :flash => { :alert => "There was an error when trying to signup for this course." }
+        end 
       else
-        redirect_to courses_url(@course), :flash => { :alert => "There was an error when trying to signup for this course." }
-      end      
+        redirect_to courses_url(@course), :flash => { :alert => "You are already signed up for this course." }
+      end     
+  end
+
+  def mycourses
+      @courses = current_user.courses
   end
 
   private
