@@ -36,20 +36,32 @@
  }
 
  .pleaselogin {
- 	margin-left: 56%;
+ 	margin-left: 57.32%;
  	margin-top: 1%;
+ 	color: black;
  }
 
  .loginform {
  	margin-left: 56%;
+ 	background-color: rgba(0,0,0,0.4);
+	padding: 0.5em;
+	width: 211px;
  }
 
  .loginform label {
- 	color: blue;
+ 	color: white;
+ }
+
+ #error_explanation {
+ 	color: white;
  }
 
   .loginform a {
- 	color: blue !important;
+ 	color: white !important;
+ }
+
+ em {
+ 	color: white;
  }
 
  .newcourse {
