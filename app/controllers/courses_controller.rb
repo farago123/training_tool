@@ -4,6 +4,8 @@ class CoursesController < ApplicationController
     if params[:search]
       @courses = Course.where('name LIKE ?', "%#{params[:search]}%")
       @courses |= Course.where('description LIKE ?', "%#{params[:search]}%")
+      @courses |= Course.where('start_date LIKE ?', "%#{params[:search]}%")
+      @courses |= Course.where('end_date LIKE ?', "%#{params[:search]}%")
       @search = true 
     else
       @courses = Course.all
@@ -60,7 +62,16 @@ class CoursesController < ApplicationController
   end
 
   def mycourses
-      @courses = current_user.courses.where("end_date > #{Date.today}")
+      if params[:search]
+        @courses = current_user.courses.where("name LIKE ? AND end_date > #{Date.today}", "%#{params[:search]}%")
+        @courses |= current_user.courses.where("description LIKE ? AND end_date > #{Date.today}", "%#{params[:search]}%")
+        @courses |= current_user.courses.where('start_date LIKE ?', "%#{params[:search]}%")
+        @courses |= current_user.courses.where('end_date LIKE ?', "%#{params[:search]}%")
+        @search = true 
+      else
+        @courses = current_user.courses
+        @search = false
+      end
   end
 
   private
