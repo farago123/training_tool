@@ -13,4 +13,5 @@
 
 <% if current_user.admin? %>
 <%= button_to "Delete This Course", courses_path(:id => @course.id), :method => :delete, class: "btn btn-primary", style: "margin-left: 20px; float:left;", data: {confirm: "Are you sure you want to delete this course?"} %>
+<%= link_to "Edit This Course", edit_courses_path(id: @course.id), :method => :get, class: "btn btn-primary", style: "margin-left: 20px; float:left;" %>
 <% end %>

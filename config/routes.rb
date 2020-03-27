@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resource :courses
   post 'courses/signup' => 'courses#signup'
   get 'courses/mycourses' => 'courses#mycourses'
+  post 'courses/update' => 'courses#update'
   devise_for :users
 end

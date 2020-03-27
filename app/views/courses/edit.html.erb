@@ -1,0 +1,17 @@
+
+<div class="updateform">
+<%= form_tag('update', :method => "post") do %>
+    <%= label :n, "Name" %><br>
+    <%= text_field_tag(:name, @course.name) %><br><br>
+    <%= label :d, "Description" %><br>
+    <%= text_field_tag(:desc, @course.description) %><br><br>
+    <%= label :sd, "Start Date" %><br>
+    <%= date_select(:start_date, "Start Date", selected: @course.start_date) %> <br> <br>
+    <%= label :ed, "End Date" %><br>
+    <%= date_select :end_date, "End Date", selected: @course.end_date %> <br> <br>
+    <%= label :t, "Time" %><br>
+    <%= text_field_tag(:time, @course.time) %><br><br>
+    <%= hidden_field_tag :id, @course.id %>
+    <%= submit_tag("Update Course") %>
+<% end %>
+</div>
