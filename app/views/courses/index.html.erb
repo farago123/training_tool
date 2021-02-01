@@ -36,5 +36,9 @@
 			  </tbody>
 		  </table>
 		</div>
+
+		<% if current_user.admin? %>
+		<%= button_to "Delete All Courses", courses_delete_all_path, :method => :post, data: {confirm: "Are you sure you want to delete all the courses?"}, class: "deleteAll" %>
+		<% end %>
 	<% end %>
 </body>

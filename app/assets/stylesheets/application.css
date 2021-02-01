@@ -22,6 +22,10 @@
  	margin-left: 10px;
  }
 
+ .search:hover {
+ 	color: green;
+ }
+
  body {
  	font-size: 1.7em !important;
  }
@@ -72,5 +76,14 @@
  .newcourse {
  	margin-left: 15px;
  }
+
+ .deleteAll {
+ 	margin-left: 8px;
+ }
+
+.deleteAll:hover {
+ 	color: green;
+ }
+
 
 

@@ -67,6 +67,16 @@ class CoursesController < ApplicationController
 
   end
 
+  def delete_all
+     
+      if Course.delete_all
+        redirect_to root_path, :flash => { :notice => "You have successfully deleted all courses." }
+      else
+        redirect_to root_path, :flash => { :alert => "There was an error when trying to delete all the courses." }
+      end
+
+  end
+
   def show
   	  @course = Course.find(params[:format])
   end
