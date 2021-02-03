@@ -1,0 +1,29 @@
+<body>
+	<% if @instructing_courses.empty? %>
+		  <h3 style="margin-left: 18px"> You are not instructing any courses right now. </h3>
+	<% else %>
+		<div class="table-responsive">
+		  <table class="table">
+		  	    <h3 style="margin-left: 8px;">Courses that I am Instructing</h3>
+				<thead>
+				  <tr>
+				   <th scope="col">Course Name</th>
+				   <th scope="col">Description</th>
+				   <th scope="col">Start Date</th>
+				   <th scope="col">End Date</th>
+				  </tr>
+				</thead>
+			    <tbody>
+			    <% @instructing_courses.each do |course| %>	
+				    <tr onclick="location.href='<%= courses_path(course) %>'">
+				      <td><%= course.name %></td>
+				      <td><%= course.description %></td>
+				      <td><%= course.start_date %></td>
+				      <td><%= course.end_date %></td>
+				    </tr>
+				<% end %>    
+			  </tbody>
+		  </table>
+		</div>
+	<% end %>
+</body>

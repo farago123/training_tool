@@ -37,7 +37,7 @@
                   <li><a href="/courses/mycourses">My Courses <span class="badge badge-light"><%= current_user.courses.count %></span></a></li>
 
                   <% if current_user.admin? %>
-                     <li><a href="#">Instructing Courses</a></li>
+                     <li><a href="/courses/instructing/">Instructing Courses</a></li>
                      <li><a href="/courses/new">Create a Course</a></li>
                   <% end %>
                 </ul>

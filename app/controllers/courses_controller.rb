@@ -111,9 +111,14 @@ class CoursesController < ApplicationController
       end
   end
 
+  def instructing
+      current_name = current_user.name
+      @instructing_courses = Course.where(instructor: current_name) 
+  end
+
   private
 
 	def course_params
-	   params.require(:course).permit(:name, :description, :start_date, :end_date, :time, :search)
+	   params.require(:course).permit(:name, :description, :start_date, :end_date, :time, :search, :instructor)
 	end
 end
